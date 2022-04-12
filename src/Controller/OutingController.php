@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Outing;
 use App\Repository\OutingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

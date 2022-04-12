@@ -10,19 +10,24 @@ header h1 {
 header a {
     text-decoration: none;
     color: inherit;
+
 }
 
 header nav a:hover {
     text-decoration: underline;
-
+    color: #6c142f;
 }
-
-
 
 .header-logo {
     font-size: 3rem;
     font-weight: normal;
     color: #FFFFFF;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-logo a:hover{
+    color: #6c142f;
 }
 
 .header-logo img {
@@ -43,6 +48,33 @@ body {
 .container {
     width: 800px;
     margin: auto;
+    font-family: 'Asul', sans-serif;
+}
+
+.register {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.not-registered {
+    color: #6c142f;
+}
+
+.not-registered:hover {
+    color: #6c142f;
+}
+
+.register-title {
+    font-size: x-large;
+}
+
+.login-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login-title {
+    font-size: x-large;
 }
 
 .header-nav {
@@ -69,6 +101,7 @@ footer {
     padding: 2rem 0;
     text-align: center;
     background-color: #ff3364;
+    color: #FFFFFF;
 }
 
 .photo {
@@ -108,8 +141,4 @@ footer {
     background: #666;
     height: 15px;
     border-radius: 50%;
-}
-
-.footer {
-    color: #FFFFFF;
 }

@@ -18,7 +18,7 @@ class OutingController extends AbstractController
         {
             $outings = $outingRepository->findAll();
 
-            return $this->render('outing/index.html.twig', [
+            return $this->render('outing/list.html.twig', [
                 'controller_name' => 'OutingController',
             ]);
         }

@@ -13,11 +13,17 @@ class User
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
+    private $username;
+
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $firstname;
+
+    #[ORM\Column(type: 'integer')]
+    private $phone;
 
     #[ORM\Column(type: 'string', length: 255, unique: true)]
     private $email;
@@ -25,8 +31,11 @@ class User
     #[ORM\Column(type: 'string', length: 255)]
     private $password;
 
-    #[ORM\Column(type: 'string', length: 255, unique: true)]
-    private $username;
+    #[ORM\Column(type: 'boolean')]
+    private $administrator;
+
+    #[ORM\Column(type: 'boolean')]
+    private $active;
 
 
     public function getId(): ?int
@@ -90,6 +99,42 @@ class User
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getPhone(): ?int
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(int $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getAdministrator(): ?bool
+    {
+        return $this->administrator;
+    }
+
+    public function setAdministrator(bool $administrator): self
+    {
+        $this->administrator = $administrator;
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

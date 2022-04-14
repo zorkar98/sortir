@@ -35,9 +35,13 @@
         {% endif %}
     </nav>
 </header>
-<main>
-    <div class="container">
+<main class="main">
+    <div class="border main-body left">
+    </div>
+    <div class="container ">
         {% block body %}{% endblock %}
+    </div>
+    <div class="border main-body right">
     </div>
 </main>
 {% include 'fragments/_footer.html.twig' %}

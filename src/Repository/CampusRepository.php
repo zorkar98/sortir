@@ -33,6 +33,18 @@ class CampusRepository extends ServiceEntityRepository
         }
     }
 
+    public function findCampus()
+    {
+        $qbCampus = $this->createQueryBuilder('camp');
+        $qbCampus->andWhere('camp.dateCreated >= 2022 ');
+        $qbCampus->addOrderBy('camp.dateCreated', 'DESC');
+
+        $req = $qbCampus->getQuery();
+        $resultat = $req->getResult();
+
+        return $resultat;
+    }
+
     /**
      * @throws ORMException
      * @throws OptimisticLockException

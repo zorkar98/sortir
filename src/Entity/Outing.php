@@ -37,6 +37,8 @@ class Outing
     #[ORM\Column(type: 'string', length: 255)]
     private $state;
 
+
+
     public function getId(): ?int
     {
         return $this->id;

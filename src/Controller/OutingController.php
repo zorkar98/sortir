@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Outing;
+use App\Form\OutingType;
 use App\Repository\OutingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,7 @@ class OutingController extends AbstractController
     {
         $outing = $outingRepository->find($id);
             if(!$outing) {
-                throw $this-> createNotFoundException('Aucune sortie n\'a été trouvée');
+                throw $this-> createNotFoundException('Oops ! Nothing here !');
             }
             return $this->render('outing/detail.html.twig',
             compact('outing'));
@@ -43,8 +44,6 @@ class OutingController extends AbstractController
         EntityManagerInterface $em,
         Request $request,
         MailerInterface $mailer,
-        Mail $mail,
-        Censurator $censurator
     ):Response
     {
         $outing = new Outing();
@@ -53,17 +52,17 @@ class OutingController extends AbstractController
         $outingForm->handleRequest($request);
         if($outingForm->isSubmitted() && $outingForm->isValid())
             {
-                $outing->setIsPublished(true);
-                $outing->setDateCreated(2);
+                //$outing->setIsPublished(true);
+                //$outing->setDateCreated(2);
 
-                $namePurify = $censurator->purify($outing->getName());
+                //$namePurify = $censurator->purify($outing->getName());
 
-                $outing->setOutingInfo($censurator->purify($outing->getOutingInfo()));
+                //$outing->setOutingInfo($censurator->purify($outing->getOutingInfo()));
 
                 $em->persist($outing);
                 $em->flush();
 
-                $mail->send();
+                //$mail->send();
 
                 $this->addFlash(
                     'congrats',

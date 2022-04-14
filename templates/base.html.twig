@@ -28,10 +28,13 @@
     <nav class="header-nav">
         <a class="header-nav-option" href="{{ path('app_main') }}">Home</a>
         {% if not app.user %}
-                <a href="{{ path('app_login') }}">Login</a>
+                <a class="header-nav-option" href="{{ path('app_login') }}">Login</a>
         {% endif %}
         {% if app.user %}
-                <a href="{{ path('app_logout') }}">Logout</a>
+                <a class="header-nav-option" href="{{ path('app_logout') }}">Logout</a>
+        {% endif %}
+        {% if app.user %}
+            <a class="header-nav-option" href="{{ path('app_create') }}">Create an event !</a>
         {% endif %}
     </nav>
 </header>

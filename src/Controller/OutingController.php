@@ -52,6 +52,8 @@ class OutingController extends AbstractController
         $outingForm->handleRequest($request);
         if($outingForm->isSubmitted() && $outingForm->isValid())
             {
+                $outing->setState('Created');
+                $outing->setDateCreated(new \DateTime());
                 //$outing->setIsPublished(true);
                 //$outing->setDateCreated(2);
 

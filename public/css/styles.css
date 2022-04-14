@@ -71,6 +71,15 @@ body {
     margin: 100px auto;
 }
 
+.create {
+    max-width: 500px;
+    margin: 75px auto;
+}
+
+.create-title {
+    font-size: x-large;
+}
+
 .not-registered {
     color: #6c142f;
 }
@@ -123,13 +132,6 @@ footer {
     border: transparent;
     border-radius: 100px;
     max-width: 170px;
-}
-
-.wish-form {
-    width: 300px;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-end;
 }
 
 .scroll {

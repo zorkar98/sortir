@@ -6,11 +6,16 @@
 
 {% block body %}
 
-    <div>
+    <div class="create">
+        <h1 class="create-title">
+            Set up your event !
+        </h1>
+        <br>
         {% form_theme outingForm 'foundation_6_layout.html.twig' %}
         {{ form_start(outingForm) }}
         {{ form_widget(outingForm) }}
-        <button>Let the dogs out !</button>
+        <br>
+        <button class="button is-rounded is-danger">Let the dogs out !</button>
 
         {{ form_end(outingForm) }}
     </div>

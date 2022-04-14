@@ -51,9 +51,24 @@ body {
     font-family: 'Asul', sans-serif;
 }
 
+.main-body {
+    background-image: url("../img/bar.jpg");
+    width: 390px;
+    -webkit-filter: blur(2px);
+}
+
+.right {
+    background-position: right;
+}
+
+.main {
+    display: flex;
+    padding: 0px;
+}
+
 .register {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
 .not-registered {
@@ -70,7 +85,7 @@ body {
 
 .login-form {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 140px auto;
 }
 
 .login-title {

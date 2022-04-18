@@ -19,6 +19,7 @@ class OutingController extends AbstractController
         ):Response
         {
             $outings = $outingRepository->findAll();
+            dump($outings);
 
             return $this->render('outing/list.html.twig', [
                 'controller_name' => 'OutingController',
@@ -55,7 +56,6 @@ class OutingController extends AbstractController
                 $outing->setState('Created');
                 $outing->setDateCreated(new \DateTime());
                 //$outing->setIsPublished(true);
-                //$outing->setDateCreated(2);
 
                 //$namePurify = $censurator->purify($outing->getName());
 

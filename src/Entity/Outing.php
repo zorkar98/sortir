@@ -45,6 +45,12 @@ class Outing
     #[ORM\Column(type: 'string', length: 255)]
     private $Author;
 
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $participants = [];
+
+    #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'outing')]
+    private $campus;
+
     public function __construct()
     {
         $this->User = new ArrayCollection();
@@ -184,6 +190,30 @@ class Outing
     public function setAuthor(string $Author): self
     {
         $this->Author = $Author;
+
+        return $this;
+    }
+
+    public function getParticipants(): ?array
+    {
+        return $this->participants;
+    }
+
+    public function setParticipants(?array $participants): self
+    {
+        $this->participants = $participants;
+
+        return $this;
+    }
+
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
 
         return $this;
     }

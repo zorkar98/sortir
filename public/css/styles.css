@@ -101,6 +101,10 @@ body {
     font-size: x-large;
 }
 
+.header-a {
+    display: flex;
+}
+
 .header-nav {
     display: block;
     margin: auto;

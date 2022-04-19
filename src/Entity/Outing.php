@@ -54,8 +54,11 @@ class Outing
     public function __construct()
     {
         $this->User = new ArrayCollection();
-    }
 
+        $this->startDateTime = new \DateTime();
+
+        $this->deadlineRegistration = new \DateTime('-1 day');
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +93,7 @@ class Outing
     {
         return $this->startDateTime;
     }
+
 
     public function setStartDateTime(\DateTimeInterface $startDateTime): self
     {

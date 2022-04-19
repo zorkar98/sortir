@@ -5,16 +5,33 @@
 {% endblock %}
 
 {% block body %}
-      <ul>
-          {% for outing in outings  %}
-                <li><a href="{{ path('app_detail',{'id':outing.id}) }}">
-                        {{ outing.name }}
-                    </a>
-                </li>
-          {% else %}
-              <p>Nothing to show sorry ! =(</p>
-          {% endfor %}
-      </ul>
+    <div class="list-and-title">
+        <h1 class="list-title">All events</h1>
+        <br>
+        <div class="list scroll scroll5">
+          <ul>
+              {% for outing in outings  %}
+                    <li>
+                        <div class="list-ligne-1">
+                            <a href="{{ path('app_detail',{'id':outing.id}) }}">{{ outing.name }}</a>
+                            <p>nb participants/{{ outing.registrationMaxNb }}</p>
+                        </div>
+                        <div class="list-ligne-2">
+                            <p>Starting date : {{ outing.startDateTime | date ("d-m-Y h:m") }}</p>
+                            <p>{{ outing.state }}</p>
+                        </div>
+                        <br>
+                        <p class="list-author"> Created by :{{ outing.author }}</p>
+                    </li>
+                  <br>
+                  <hr class="ligne-separation">
+                  <br>
+              {% else %}
+                  <p>Nothing to show sorry ! =(</p>
+              {% endfor %}
+          </ul>
+        </div>
+    </div>
 
 {% endblock %}
 

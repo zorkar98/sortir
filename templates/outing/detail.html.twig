@@ -5,9 +5,12 @@
 {% endblock %}
 
 {% block body %}
-    <h2>{{ outing.name }}</h2>
-    <p class="outing-credit">Created by {{  outing.author }}
-        on {{ outing.dateCreated | date('Y-m-d') }}.
-    </p>
-    <div>{{ outing.outingInfo | nl2br }}</div>
+    <div class="detail-div">
+        <h2>{{ outing.name }}</h2>
+        <p> Campus : {{ outing.campus.name }}</p>
+        <p class="outing-credit">Created by {{  outing.author }}
+            on {{ outing.dateCreated | date('Y-m-d') }}.
+        </p>
+        <div>{{ outing.outingInfo | nl2br }}</div>
+    </div>
 {% endblock %}

@@ -33,6 +33,7 @@ class OutingRepository extends ServiceEntityRepository
         }
     }
 
+
     /**
      * @throws ORMException
      * @throws OptimisticLockException

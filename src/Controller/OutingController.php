@@ -12,35 +12,34 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
+
 
 class OutingController extends AbstractController
 {
     #[Route('/outing/list', name: 'app_list')]
-        public function outing(OutingRepository $outingRepository
+        public function outing(
+            OutingRepository $outingRepository
         ):Response
         {
             $outings = $outingRepository->findAll();
-            dump($outings);
 
-            return $this->render('outing/list.html.twig', [
-                'controller_name' => 'OutingController',
-            ]);
+            return $this->render('outing/list.html.twig',
+                compact("outings"));
         }
 
     #[Route('outing/detail/{id}', name: 'app_detail')]
-    public function detail(
-        $id = 1,
-        OutingRepository $outingRepository
-    ):Response
-    {
-        $outing = $outingRepository->find($id);
-            if(!$outing) {
-                throw $this-> createNotFoundException('Oops ! Nothing here !');
-            }
-            return $this->render('outing/detail.html.twig',
-            compact('outing'));
-    }
+        public function detail(
+            $id = 1,
+            OutingRepository $outingRepository
+        ):Response
+        {
+            $outing = $outingRepository->find($id);
+                if(!$outing) {
+                    throw $this-> createNotFoundException('Oops ! Nothing here !');
+                }
+                return $this->render('outing/detail.html.twig',
+                compact('outing'));
+        }
 
     #[Route ('outing/create', name : 'app_create')]
     public function create(

@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\Outing;
 use App\Form\OutingType;
 use App\Repository\OutingRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class OutingController extends AbstractController
 {
@@ -43,6 +45,7 @@ class OutingController extends AbstractController
     #[Route ('outing/create', name : 'app_create')]
     public function create(
         EntityManagerInterface $em,
+        UserRepository $userRepository,
         Request $request,
         MailerInterface $mailer,
     ):Response
@@ -53,8 +56,11 @@ class OutingController extends AbstractController
         $outingForm->handleRequest($request);
         if($outingForm->isSubmitted() && $outingForm->isValid())
             {
+                $currentUser = $userRepository->findOneBy(['username' => $this->getUser()->getUserIdentifier()]);
+                $outing->setAuthor($currentUser->getUsername());
                 $outing->setState('Created');
                 $outing->setDateCreated(new \DateTime());
+
                 //$outing->setIsPublished(true);
 
                 //$namePurify = $censurator->purify($outing->getName());

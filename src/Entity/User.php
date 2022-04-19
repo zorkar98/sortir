@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -39,6 +41,17 @@ class User implements \Symfony\Component\Security\Core\User\PasswordAuthenticate
 
     #[ORM\Column(type: 'boolean')]
     private $active;
+
+    #[ORM\ManyToMany(targetEntity: Outing::class, mappedBy: 'User')]
+    private $outings;
+
+
+    public function __construct()
+    {
+        $this->Outings = new ArrayCollection();
+        $this->outings = new ArrayCollection();
+    }
+
 
 
     public function getId(): ?int
@@ -167,4 +180,32 @@ class User implements \Symfony\Component\Security\Core\User\PasswordAuthenticate
     {
         return (string) $this->username;
     }
+
+    /**
+     * @return Collection<int, Outing>
+     */
+    public function getOutings(): Collection
+    {
+        return $this->outings;
+    }
+
+    public function addOuting(Outing $outing): self
+    {
+        if (!$this->outings->contains($outing)) {
+            $this->outings[] = $outing;
+            $outing->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOuting(Outing $outing): self
+    {
+        if ($this->outings->removeElement($outing)) {
+            $outing->removeUser($this);
+        }
+
+        return $this;
+    }
+
 }

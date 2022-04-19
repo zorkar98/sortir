@@ -6,7 +6,7 @@
 
 {% block body %}
     <h2>{{ outing.name }}</h2>
-    <p class="outing-credit">Created by {{  outing.name }}
+    <p class="outing-credit">Created by {{  outing.author }}
         on {{ outing.dateCreated | date('Y-m-d') }}.
     </p>
     <div>{{ outing.outingInfo | nl2br }}</div>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OutingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OutingRepository::class)]
@@ -37,6 +39,16 @@ class Outing
     #[ORM\Column(type: 'string', length: 255)]
     private $state;
 
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'outings')]
+    private $User;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Author;
+
+    public function __construct()
+    {
+        $this->User = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -139,4 +151,41 @@ class Outing
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUser(): Collection
+    {
+        return $this->User;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->User->contains($user)) {
+            $this->User[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->User->removeElement($user);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->Author;
+    }
+
+    public function setAuthor(string $Author): self
+    {
+        $this->Author = $Author;
+
+        return $this;
+    }
+
 }

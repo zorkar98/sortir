@@ -10,7 +10,7 @@
 
     {# Sans l'API #}
       <ul>
-          {% for outing in outings  %}
+          {% for outings in outing  %}
                 <li><a href="{{ path('app_detail',{'id':outing.id}) }}">
                         {{ outing.name }} - {{ outing.category.name }}
                     </a>

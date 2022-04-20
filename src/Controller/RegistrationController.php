@@ -28,47 +28,53 @@ class RegistrationController extends AbstractController
 //    }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
-    {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-        $user->setAdministrator(false);
-        $user->setActive(true);
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        UserAuthenticatorInterface $userAuthenticator,
+        AppAuthenticator $authenticator,
+        EntityManagerInterface $entityManager
+    ): Response
+        {
+            $user = new User();
+            $form = $this->createForm(RegistrationFormType::class, $user);
+            $form->handleRequest($request);
+            $user->setAdministrator(false);
+            $user->setActive(true);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-            $userPasswordHasher->hashPassword(
+            if ($form->isSubmitted() && $form->isValid()) {
+                // encode the plain password
+                $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                // generate a signed url and email it to the user
+    //            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+    //                (new TemplatedEmail())
+    //                    ->from(new Address('admin@campus-eni.fr', 'Admin'))
+    //                    ->to($user->getEmail())
+    //                    ->subject('Please Confirm your Email')
+    //                    ->htmlTemplate('registration/confirmation_email.html.twig')
+    //            );
+                // do anything else you need here, like send an email
+
+                return $userAuthenticator->authenticateUser(
                     $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+                    $authenticator,
+                    $request
+                );
+            }
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // generate a signed url and email it to the user
-//            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-//                (new TemplatedEmail())
-//                    ->from(new Address('admin@campus-eni.fr', 'Admin'))
-//                    ->to($user->getEmail())
-//                    ->subject('Please Confirm your Email')
-//                    ->htmlTemplate('registration/confirmation_email.html.twig')
-//            );
-            // do anything else you need here, like send an email
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+            return $this->render('registration/register.html.twig', [
+                'registrationForm' => $form->createView(),
+            ]);
         }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
-    }
 
 //    #[Route('/verify/email', name: 'app_verify_email')]
 //    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response

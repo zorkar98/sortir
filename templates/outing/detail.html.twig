@@ -5,21 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="detail-div">
+<div class="detail-div" xmlns="http://www.w3.org/1999/html">
         <h2>{{ outing.name }}</h2>
         <p> Campus : {{ outing.campus.name }}</p>
         <p class="outing-credit">Created by {{  outing.author }}
             on {{ outing.dateCreated | date('Y-m-d') }}.
         </p>
         <div>{{ outing.outingInfo | nl2br }}</div>
+        <button href="" class="button is-danger">Register</button>
     </div>
-
-
-    <div class="detail-div" >
-        <ul>
-
-        </ul>
-    </div>
-
 
 {% endblock %}

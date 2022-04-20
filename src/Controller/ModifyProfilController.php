@@ -24,26 +24,28 @@ class ModifyProfilController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
         {
-            $newProfil = new User();
-            $profilForm = $this->createForm(ProfilFormType::class, $newProfil);
+            $user = $this->getUser();
+            $profilForm = $this->createForm(ProfilFormType::class, $user);
+
             $profilForm->handleRequest($request);
-            $newProfil->setAdministrator(false);
-            $newProfil->setActive(true);
+
+            $user->setAdministrator(false);
+            $user->setActive(true);
 
             if ($profilForm->isSubmitted() && $profilForm->isValid()) {
-                $newProfil->setPassword(
+                $user->setPassword(
                     $userPasswordHasher->hashPassword(
-                        $newProfil,
-                        $profilForm->get('plainPassword')->getData()
+                        $user,
+                        $profilForm->get('password')->getData()
                     )
                 );
 
 
-            $entityManager->persist($newProfil);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             return $userAuthenticator->authenticateUser(
-                $newProfil,
+                $user,
                 $authenticator,
                 $request
             );

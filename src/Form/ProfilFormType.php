@@ -23,7 +23,7 @@ class ProfilFormType extends AbstractType
                 "attr"=> [
                     "class"=>
                         "input is-rounded is-danger",
-                            "pattern"=>"^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$]"],
+                            "pattern"=>"^[a-zA-Z0-9][a-zA-Z0-9]{3,18}[a-zA-Z0-9]$]"],
                                 "constraints" => [
                                     new NotBlank([
                                         "message"=> "Please, complete the field !"]),

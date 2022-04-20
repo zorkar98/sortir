@@ -23,7 +23,7 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', TextType::class, ["attr"=> ["class"=>"input is-rounded is-danger","pattern"=>"^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"]])
+            ->add('username', TextType::class, ["attr"=> ["class"=>"input is-rounded is-danger","pattern"=>"^[a-zA-Z0-9][a-zA-Z0-9]{3,18}[a-zA-Z0-9]$"]])
             ->add('email', EmailType::class, ["attr"=> ["class"=>"input is-rounded is-danger","pattern"=>"^[^\W][a-zA-Z0-9\-\._]+[^\W]@[^\W][a-zA-Z0-9\-\._]+[^\W]\.[a-zA-Z]{2,6}$"]])
             ->add('name', TextType::class, ["attr"=> ["class"=>"input is-rounded is-danger"]])
             ->add('firstname', TextType::class, ["attr"=> ["class"=>"input is-rounded is-danger"]])

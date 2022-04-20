@@ -2,9 +2,19 @@
 
 {% block body %}
 
-<p>Béjour jeune entrepreneur</p>
+    <div class="create">
+        <h1 class="create-title">
+            Search the campus's events !
+        </h1>
+        <br>
+        {% form_theme campusForm 'foundation_6_layout.html.twig' %}
+        {{ form_start(campusForm) }}
+        {{ form_widget(campusForm) }}
+        <br>
+        <button class="button is-rounded is-danger">Search</button>
 
-    <a href="{{ path ('app_search') }}" class="btn">Recherche Campus</a>
+        {{ form_end(campusForm) }}
+    </div>
 
 
 {% endblock %}

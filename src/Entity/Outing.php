@@ -48,8 +48,11 @@ class Outing
     #[ORM\Column(type: 'array', nullable: true)]
     private $participants = [];
 
-    #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'outing')]
+    #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'campus_outing')]
+    #[ORM\JoinColumn(nullable: false)]
     private $campus;
+
+
 
     public function __construct()
     {
@@ -221,5 +224,7 @@ class Outing
 
         return $this;
     }
+
+
 
 }

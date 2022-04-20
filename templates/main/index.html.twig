@@ -3,25 +3,24 @@
 {% block title %}Hello MainController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="index-div">
+   <h1 class="index-title">Welcome to Hang Out App, by the ENI development team</h1>
+   <p class="index-text-1">
+      Here you will be able to find all the events organized by the students of ENI school,
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <!--<ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/tverre2021/Documents/sortir/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/tverre2021/Documents/sortir/templates/main/modifyprofil.html.twig'|file_link(0) }}">templates/main/modifyprofil.html.twig</a></code></li>
-    </ul>-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <ul>
-        <li><strong>TODO: Il faut aussi changer cette page !</strong> </li>
-    </ul>
+      feel free to register yourself to some of them if you're interested !
+   </p>
+   <p class="index-text-2">
+      There is plenty of different kind of events so you should be able to find something juicy !
+   </p>
+   <p class="index-text-3">
+      And if you're not satisfied you can even create your own events !
+   </p>
+</div>
+<div class="photo-div">
+   <img class="photo" src="{{ asset('img/bar.jpeg') }}">
+   <img class="photo" src="{{ asset('img/rando.jpg') }}">
+   <img class="photo" src="{{ asset('img/festival.jpg') }}">
+   <img class="photo" src="{{ asset('img/disco.jpg') }}">
 </div>
 {% endblock %}

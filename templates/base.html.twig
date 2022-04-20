@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/ebc72dbf59.js" crossorigin="anonymous"></script>
     {% block css %}{% endblock %}
     <title>
         {% block title %}
@@ -17,13 +18,14 @@
 </head>
 <body>
 <header>
-    <div class="container">
+    <div class="container header-div">
         <h1 class="header-logo">
             <a class="header-a" href="{{ path('app_main') }}">
                 <img src="{{ asset('img/logobis.png') }}" alt="logo">
                 Hang Out App
             </a>
         </h1>
+        <a href="https://www.eni-ecole.fr"><img class="logo-Eni" src="{{ asset('img/logoENI.png') }}"></a>
     </div>
     <nav class="header-nav">
         <a class="header-nav-option" href="{{ path('app_main') }}">Home</a>

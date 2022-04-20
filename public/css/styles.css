@@ -1,6 +1,7 @@
 header {
     background-color: #ff3364;
     padding: 1rem 0;
+    font-family: 'Asul', sans-serif;
 }
 
 header h1 {
@@ -16,6 +17,7 @@ header a {
 header nav a:hover {
     text-decoration: underline;
     color: #6c142f;
+
 }
 
 .header-logo {
@@ -35,6 +37,11 @@ header nav a:hover {
     margin-right: 5px;
 }
 
+.header-div {
+    display: flex;
+    justify-content: space-around;
+}
+
 body {
     margin: 0;
     display: flex;
@@ -43,6 +50,24 @@ body {
     font-family: 'Asul', sans-serif;
     background-color: aliceblue;
 
+}
+
+.logo-Eni {
+    height: auto;
+    max-width: 79px;
+}
+
+.index-title {
+    font-size: xx-large;
+}
+
+.index-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+    padding: 20px;
 }
 
 .container {
@@ -133,10 +158,20 @@ footer {
     color: #FFFFFF;
 }
 
+.photo-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .photo {
     border: transparent;
     border-radius: 100px;
-    max-width: 170px;
+    max-width: 450px;
+    padding: 10px;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .detail-div {
@@ -144,7 +179,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 150px;
+    padding: 10px 150px;
 }
 
 .list-and-title {
@@ -174,6 +209,10 @@ footer {
 
 .list-author {
     padding: 0 20px;
+}
+
+.icon-participants {
+    color: #ff3364;
 }
 
 .ligne-separation {

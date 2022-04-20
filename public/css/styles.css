@@ -47,6 +47,7 @@ body {
 
 .container {
     width: 800px;
+    max-width: 800px;
     margin: auto;
     font-family: 'Asul', sans-serif;
 }
@@ -146,6 +147,40 @@ footer {
     padding: 150px;
 }
 
+.list-and-title {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.list-title {
+    font-size: x-large;
+}
+
+.list {
+    max-width: 600px;
+}
+
+.list-ligne-1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.list-ligne-2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.list-author {
+    padding: 0 20px;
+}
+
+.ligne-separation {
+    background-color: #ff3364;
+    margin: 0 10px;
+}
+
 .scroll {
     width: 750px;
     height: 600px;
@@ -159,15 +194,15 @@ footer {
 }
 
 .scroll5::-webkit-scrollbar-thumb {
-    background: #666;
+    background: #6c142f;
 }
 
 .scroll5::-webkit-scrollbar-track {
-    background: #ddd;
+    background: #bc8583;
 }
 
 .scroll5::-webkit-scrollbar-button {
-    background: #666;
+    background: #6c142f;
     height: 15px;
     border-radius: 50%;
 }

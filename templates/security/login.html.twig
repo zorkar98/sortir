@@ -18,7 +18,7 @@
 
             <h1 class="h3 mb-3 font-weight-normal login-title">Please sign in</h1>
             <label for="inputUsername">Username</label>
-            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control is-rounded input is-danger" autocomplete="username" required autofocus>
+            <input type="text" value="{{ last_username }}" pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$" name="username" id="inputUsername" class="form-control is-rounded input is-danger" autocomplete="username" required autofocus>
             <label for="inputPassword">Password</label>
             <input type="password" name="password" id="inputPassword" class="form-control input is-rounded is-danger" autocomplete="current-password" required>
 

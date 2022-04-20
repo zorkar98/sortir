@@ -5,16 +5,24 @@
 {% endblock %}
 
 {% block body %}
-      <ul>
-          {% for outing in outings  %}
-                <li><a href="{{ path('app_detail',{'id':outing.id}) }}">
-                        {{ outing.name }}
-                    </a>
-                </li>
-          {% else %}
-              <p>Nothing to show sorry ! =(</p>
-          {% endfor %}
-      </ul>
+    <div class="detail-div">
+          <ul>
+              {% for outing in outings  %}
+                    <li><a href="{{ path('app_detail',{'id':outing.id}) }}">
+                            {{ outing.name }}
+                        </a>
+                    </li>
+              {% else %}
+                  <p>Nothing to show sorry ! =(</p>
+              {% endfor %}
+          </ul>
+    </div>
+
+{#        {% if app.user %}#}
+{#            <li>#}
+{#                <a class="" href="{{ path('app_modifyouting') }}">Modify your outing</a>#}
+{#            </li>#}
+{#        {% endif %}#}
 
 {% endblock %}
 

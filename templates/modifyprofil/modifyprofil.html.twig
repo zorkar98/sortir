@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="create">
+        <h1 class="create-title">
+            Edit your profile
+        </h1>
+        <br>
+            {% form_theme profilForm 'foundation_6_layout.html.twig' %}
+            {{ form_start(profilForm) }}
+            {{ form_widget(profilForm) }}
+            <br>
+            <button class="button is-rounded is-danger">Edit</button>
+
+            {{ form_end(profilForm) }}
+    </div>
+
+{% endblock %}

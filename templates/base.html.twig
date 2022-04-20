@@ -27,19 +27,28 @@
     </div>
     <nav class="header-nav">
         <a class="header-nav-option" href="{{ path('app_main') }}">Home</a>
-        <a class="header-nav-option" href="{{ path ('app_search') }}">Recherche Campus</a>
-        {% if not app.user %}
-                <a class="header-nav-option" href="{{ path('app_login') }}">Login</a>
-        {% endif %}
-        {% if app.user %}
+
+            {% if not app.user %}
+                    <a class="header-nav-option" href="{{ path('app_login') }}">Login</a>
+            {% endif %}
+
+            {% if app.user %}
+                <a class="header-nav-option" href="{{ path('app_profil') }}">Profil</a>
+            {% endif %}
+
+            {% if app.user %}
+                <a class="header-nav-option" href="{{ path('app_create') }}">Create an event !</a>
+            {% endif %}
+
+            {% if app.user %}
+                <a class="header-nav-option" href="{{ path('app_list') }}">All Events</a>
+            {% endif %}
+
+        <a class="header-nav-option" href="{{ path ('app_search') }}">Find Campus ?</a>
+
+            {% if app.user %}
                 <a class="header-nav-option" href="{{ path('app_logout') }}">Logout</a>
-        {% endif %}
-        {% if app.user %}
-            <a class="header-nav-option" href="{{ path('app_create') }}">Create an event !</a>
-        {% endif %}
-        {% if app.user %}
-            <a class="header-nav-option" href="{{ path('app_list') }}">Outing list</a>
-        {% endif %}
+            {% endif %}
     </nav>
 </header>
 <main class="main">

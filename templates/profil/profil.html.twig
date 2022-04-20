@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="detail-div">
+        <p>Name : {{ app.user.name }}</p>
+        <p>FirstName : {{ app.user.firstname }}</p>
+        <p>UserName : {{ app.user.username }}</p>
+        <p>Email : {{ app.user.email }}</p>
+        <p>Phone : {{ app.user.phone }}</p>
+    </div>
+
+    {% if app.user %}
+        <a class="header-nav-option" href="{{ path('app_modifyprofil') }}">Logout</a>
+    {% endif %}
+
+{% endblock %}
+
+

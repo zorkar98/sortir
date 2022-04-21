@@ -23,12 +23,8 @@ class SearchController extends AbstractController
          $campus = new Campus();
          $campusForm= $this->createForm(CampusFormType::class, $campus);
          return $this->render('search/outingByCampus.html.twig', [
-             'campusForm' => $campusForm->createView()
-
+             'campusForm' => $campusForm->createView(),
+             $this->redirectToRoute('app_find'),
          ]);
-
-
      }
-
-
 }

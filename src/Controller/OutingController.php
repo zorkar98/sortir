@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Outing;
 use App\Form\OutingType;
+use App\Repository\CampusRepository;
 use App\Repository\OutingRepository;
 use App\Repository\UserRepository;
+use ContainerBZtjxxQ\getMaker_PhpCompatUtilService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -18,13 +21,31 @@ class OutingController extends AbstractController
 {
     #[Route('/outing/list', name: 'app_list')]
         public function outing(
-            OutingRepository $outingRepository
+            OutingRepository $outingRepository,
+            CampusRepository $campusRepository,
+            Request          $request,
         ):Response
         {
-            $outings = $outingRepository->findAll();
+
+            //On recupere les filtres
+            $filters = $request -> get("campus");
+
+            //On va chercher les sorties en fonction du filtre
+            $outings = $outingRepository->getOuting($filters);
+
+            //On va chercher toutes les catégories
+            $campus = $campusRepository->findAll();
+
+            //On vérifie si on a un requete ajax
+            if($request->get('ajax')){
+                return new JsonResponse([
+                    'content' => $this->renderView('outing/_content.html.twig',
+                        compact("outings"))
+                ]);
+            }
 
             return $this->render('outing/list.html.twig',
-                compact("outings"));
+                compact("outings","campus"));
         }
 
     #[Route('outing/detail/{id}', name: 'app_detail')]
@@ -51,8 +72,6 @@ class OutingController extends AbstractController
     {
         $outing = new Outing();
         $outingForm = $this->createForm(OutingType::class, $outing);
-
-
 
         $outingForm->handleRequest($request);
         if($outingForm->isSubmitted() && $outingForm->isValid())
@@ -82,6 +101,11 @@ class OutingController extends AbstractController
         return $this->render(
             'outing/create.html.twig',
             ['outingForm' => $outingForm->createView()]
+
         );
     }
+
+
+
+
 }

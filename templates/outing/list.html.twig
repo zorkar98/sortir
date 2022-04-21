@@ -8,30 +8,19 @@
     <div class="detail-div">
         <div class="list-and-title">
             <h1 class="list-title">All events</h1>
+            <div>
+                <p>Filter :</p>
+                <form id="filters">
+                    {% for campu in campus %}
+                        <p><input type="checkbox" name="campus[]" id="camp{{ campu.id }}" value="{{ campu.id }}">
+                        <label for="camp{{ campu.id }}">{{ campu.name }}</label></p>
+                    {% endfor %}
+                </form>
+            </div>
             <br>
             <div class="list scroll scroll5">
-                <ul>
-                    {% for outing in outings  %}
-                        <li>
-                            <div class="list-ligne-1">
-                                <a href="{{ path('app_detail',{'id':outing.id}) }}">{{ outing.name }}</a>
-                                <p>0 / {{ outing.registrationMaxNb }}    <i class="fa fa-user icon-participants"></i></p>
-                            </div>
-                            <div class="list-ligne-2">
-                                <p>Starting date : {{ outing.startDateTime | date ("d-m-Y h:m") }}</p>
-                                <p>{{ outing.state }}</p>
-                            </div>
-                            <br>
-                            <div class="list-ligne-3">
-                                <p class="list-author"> Created by :{{ outing.author }}</p>
-                            </div>
-                        </li>
-                        <br>
-                        <hr class="ligne-separation">
-                        <br>
-                    {% else %}
-                        <p>Nothing to show sorry ! =(</p>
-                    {% endfor %}
+                <ul id="content">
+                    {% include "outing/_content.html.twig" %}
                 </ul>
             </div>
         </div>
@@ -45,5 +34,8 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('js/filters.js') }}"></script>
+{% endblock %}
 
 

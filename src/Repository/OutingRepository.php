@@ -33,6 +33,19 @@ class OutingRepository extends ServiceEntityRepository
         }
     }
 
+    public function getOuting ($filters = null) {
+        $query = $this->createQueryBuilder('o');
+
+        //on filtre les données
+        if ($filters != null){
+            $query->where('o.campus IN (:camp)')
+                ->setParameter(':camp', array_values($filters));
+        }
+
+        $query->orderBy('o.startDateTime');
+
+        return $query->getQuery()->getResult();
+    }
 
     /**
      * @throws ORMException

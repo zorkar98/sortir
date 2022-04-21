@@ -46,7 +46,9 @@
                 <a class="header-nav-option" href="{{ path('app_list') }}">All Events</a>
             {% endif %}
 
-        <a class="header-nav-option" href="{{ path ('app_search') }}">Find Campus ?</a>
+            {% if app.user %}
+            <a class="header-nav-option" href="{{ path ('app_search') }}">Find Campus ?</a>
+            {% endif %}
 
             {% if app.user %}
                 <a class="header-nav-option" href="{{ path('app_logout') }}">Logout</a>
@@ -63,5 +65,7 @@
     </div>
 </main>
 {% include 'fragments/_footer.html.twig' %}
+{% block javascripts %}
+{% endblock %}
 </body>
 </html>

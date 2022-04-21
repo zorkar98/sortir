@@ -3,7 +3,9 @@
 {% block body %}
 
     <p>  500 (Internal Server Error): The server encountered an unexpected condition,
-        which stopped him from completing the request</p>
+        which stopped him from completing the request.</p>
+
+    <a href="{{ path('app_main') }}">Go back to the main page.</a>
 
     {#  Le serveur a rencontré une condition inattendue ce qui l'empêche de compléter la requête.
         C'est une erreur très générale qui ne fournie pas beaucoup d'information sur la provenance du problème.

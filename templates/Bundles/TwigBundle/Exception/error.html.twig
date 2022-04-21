@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <p> An error occurred.</p>
+
+    <a href="{{ path('app_main') }}">Go back to the main page.</a>
+
+    {# Erreurs autres que 400 / 401 / 403 / 404 / 500 #}
+
+{% endblock %}

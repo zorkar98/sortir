@@ -28,7 +28,8 @@
     {% endif %}
     {% if app.user %}
         <div class="button-profil">
-            <button class="header-nav-option button is-danger " href="{{ path('app_modifyprofil') }}">Modify Profile</button>
+            <a href="{{ path('app_modifyprofil') }}"><button class="header-nav-option button is-danger "> Modify Profile</button>
+            </a>
         </div>
     {% endif %}
 

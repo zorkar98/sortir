@@ -33,6 +33,7 @@
                     <a href="{{ path('app_outing_unregistration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Unregister</button></a>
                 {% endif %}
 
+            <a href="{{ path('app_modifyouting', {'id': outing.id}) }}"><button class="header-nav-option button is-danger "> Modify Outing</button></a>
             </div>
     {% endif %}
 {% endblock %}

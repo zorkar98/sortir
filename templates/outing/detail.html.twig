@@ -26,7 +26,9 @@
                 <br>
                 {%  if app.user.username not in outing.participants %}
                     {% if outing.participants|length < outing.registrationMaxNb %}
-                        <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
+                        {% if "now" |date  < outing.deadlineRegistration|date  %}
+                            <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
 

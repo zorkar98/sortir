@@ -1,4 +1,5 @@
 {% for outing in outings  %}
+    {% if "now" | date < outing.startDateTime | date_modify ("+10 days") | date   %}
     <li>
         <div class="list-ligne-1">
             <a href="{{ path('app_detail',{'id':outing.id}) }}">{{ outing.name }}</a>
@@ -13,7 +14,9 @@
             <p class="list-author"> Created by :{{ outing.author }}</p>
             {%  if app.user.username not in outing.participants %}
                 {% if outing.participants|length < outing.registrationMaxNb %}
-                    <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
+                    {% if "now" |date  < outing.deadlineRegistration|date  %}
+                         <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
+                    {% endif %}
                 {% endif %}
             {% endif %}
 
@@ -25,6 +28,7 @@
     <br>
     <hr class="ligne-separation">
     <br>
+    {% endif %}
 {% else %}
     <p>Nothing to show sorry ! =(</p>
 {% endfor %}

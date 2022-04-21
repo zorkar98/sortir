@@ -226,6 +226,10 @@ footer {
     margin: 0 10px;
 }
 
+.arrow {
+    color: #ff3364
+}
+
 .scroll {
     width: 750px;
     height: 600px;

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{#    <p>{{ user }}</p>#}
+    <div class="detail-div">
+        <p class="profil">Name : {{ user.name }}</p>
+        <p class="profil">FirstName : {{ user.firstname }}</p>
+        <p class="profil">UserName : {{ user.username }}</p>
+        <p class="profil">Email : {{ user.email }}</p>
+        <p class="profil">Phone : {{ user.phone }}</p>
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

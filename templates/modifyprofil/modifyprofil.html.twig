@@ -4,19 +4,28 @@
 {% endblock %}
 
 {% block body %}
-
-    <div class="create">
-        <h1 class="create-title">
-            Edit your profile
-        </h1>
-        <br>
-            {% form_theme profilForm 'foundation_6_layout.html.twig' %}
-            {{ form_start(profilForm) }}
-            {{ form_widget(profilForm) }}
+    {% if not app.user %}
+        <div class="alert-login-div">
+            <p class="alert-login">
+                Please log in to get acces to this page !
+            </p>
             <br>
-            <button class="button is-rounded is-danger">Edit</button>
+            <a href="{{ path('app_login') }}"><button class="button is-danger is-rounded alert-login">Log in</button></a>
+        </div>
+    {% endif %}
+    {% if app.user %}
+        <div class="create">
+            <h1 class="create-title">
+                Edit your profile
+            </h1>
+            <br>
+                {% form_theme profilForm 'foundation_6_layout.html.twig' %}
+                {{ form_start(profilForm) }}
+                {{ form_widget(profilForm) }}
+                <br>
+                <button class="button is-rounded is-danger">Edit</button>
 
-            {{ form_end(profilForm) }}
-    </div>
-
+                {{ form_end(profilForm) }}
+        </div>
+    {% endif %}
 {% endblock %}

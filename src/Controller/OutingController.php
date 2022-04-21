@@ -105,7 +105,37 @@ class OutingController extends AbstractController
         );
     }
 
+    #[Route('/outing/{outing}/registration/', name: 'app_outing_registration')]
+    public function outingAddParticipants(
+        Outing $outing,
+        UserRepository $userRepository,
+        EntityManagerInterface $entityManagerInterface,
+    ): Response
+    {
+        $user = $userRepository->findOneBy(['username' => ($this->getUser()->getUserIdentifier())]);
+        $outing->addParticipants($user->getUsername());
 
+        $entityManagerInterface->persist($outing);
+        $entityManagerInterface->flush($outing);
+        return $this->redirectToRoute('app_list');
+
+    }
+
+
+    #[Route('/outing/{outing}/unregistration/', name: 'app_outing_unregistration')]
+    public function outingRemoveParticipants(
+        Outing $outing,
+        UserRepository $userRepository,
+        EntityManagerInterface $entityManagerInterface,
+    ): Response
+    {
+        $user = $userRepository->findOneBy(['username' => ($this->getUser()->getUserIdentifier())]);
+        $outing->removeParticipants($user->getUsername());
+
+        $entityManagerInterface->persist($outing);
+        $entityManagerInterface->flush($outing);
+        return $this->redirectToRoute('app_list');
+    }
 
 
 }

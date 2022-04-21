@@ -213,6 +213,24 @@ class Outing
         return $this;
     }
 
+    public function addParticipants($participant): self
+    {
+        if (!in_array($participant , $this->participants)) {
+            $this->participants[] = $participant;
+        }
+
+        return $this;
+    }
+
+    public function removeParticipants($participant): self
+    {
+
+        $index = array_search($participant , $this->participants);
+        unset($this->participants[$index]);
+
+        return $this;
+    }
+
     public function getCampus(): ?Campus
     {
         return $this->campus;

@@ -6,6 +6,16 @@
 
 {% block body %}
 
+    {% if not app.user %}
+        <div class="alert-login-div">
+            <p class="alert-login">
+                Please log in to get acces to this page !
+            </p>
+            <br>
+            <a href="{{ path('app_login') }}"><button class="button is-danger is-rounded alert-login">Log in</button></a>
+        </div>
+    {% endif %}
+    {% if app.user %}
     <div class="create">
         <h1 class="create-title">
             Set up your event !
@@ -19,6 +29,6 @@
 
         {{ form_end(outingForm) }}
     </div>
-
+    {% endif %}
 {% endblock %}
 

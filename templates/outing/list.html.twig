@@ -5,27 +5,37 @@
 {% endblock %}
 
 {% block body %}
-    <div class="detail-div">
-        <div class="list-and-title">
-            <h1 class="list-title">All events</h1>
-            <div>
-                <p>Filter :</p>
-                <form id="filters">
-                    {% for campu in campus %}
-                        <p><input type="checkbox" name="campus[]" id="camp{{ campu.id }}" value="{{ campu.id }}">
-                        <label for="camp{{ campu.id }}">{{ campu.name }}</label></p>
-                    {% endfor %}
-                </form>
-            </div>
+    {% if not app.user %}
+        <div class="alert-login-div">
+            <p class="alert-login">
+                Please log in to get acces to this page !
+            </p>
             <br>
-            <div class="list scroll scroll5">
-                <ul id="content">
-                    {% include "outing/_content.html.twig" %}
-                </ul>
+            <a href="{{ path('app_login') }}"><button class="button is-danger is-rounded alert-login">Log in</button></a>
+        </div>
+    {% endif %}
+    {% if app.user %}
+        <div class="detail-div">
+            <div class="list-and-title">
+                <h1 class="list-title">All events</h1>
+                <div>
+                    <p>Filter :</p>
+                    <form id="filters" class="filters">
+                        {% for campu in campus %}
+                            <p><input type="checkbox" name="campus[]" id="camp{{ campu.id }}" value="{{ campu.id }}">
+                            <label for="camp{{ campu.id }}">{{ campu.name }}</label></p>
+                        {% endfor %}
+                    </form>
+                </div>
+                <br>
+                <div class="list scroll scroll5">
+                    <ul id="content">
+                        {% include "outing/_content.html.twig" %}
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-
+    {% endif %}
 {#        {% if app.user %}#}
 {#            <li>#}
 {#                <a class="" href="{{ path('app_modifyouting') }}">Modify your outing</a>#}

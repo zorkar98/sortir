@@ -207,6 +207,12 @@ footer {
     padding: 0 10px;
 }
 
+.list-ligne-3 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
 .list-author {
     padding: 0 20px;
 }
@@ -258,6 +264,13 @@ footer {
     border-radius: 7px;
 }
 
+.alert-login-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
 .button-profil {
     border: inset;
     border-color: transparent;
@@ -265,4 +278,9 @@ footer {
     margin: 0 auto;
     display: block;
     max-width: 133.2px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
 }

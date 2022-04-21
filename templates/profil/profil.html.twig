@@ -8,15 +8,17 @@
 {% block body %}
 
     <div class="detail-div">
-        <p>Name : {{ app.user.name }}</p>
-        <p>FirstName : {{ app.user.firstname }}</p>
-        <p>UserName : {{ app.user.username }}</p>
-        <p>Email : {{ app.user.email }}</p>
-        <p>Phone : {{ app.user.phone }}</p>
+        <p class="profil">Name : {{ app.user.name }}</p>
+        <p class="profil">FirstName : {{ app.user.firstname }}</p>
+        <p class="profil">UserName : {{ app.user.username }}</p>
+        <p class="profil">Email : {{ app.user.email }}</p>
+        <p class="profil">Phone : {{ app.user.phone }}</p>
     </div>
 
     {% if app.user %}
-        <a class="header-nav-option" href="{{ path('app_modifyprofil') }}">Modify Profile</a>
+        <div class="button-profil">
+            <button class="header-nav-option button is-danger " href="{{ path('app_modifyprofil') }}">Modify Profile</button>
+        </div>
     {% endif %}
 
 {% endblock %}

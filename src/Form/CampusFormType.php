@@ -13,10 +13,13 @@ class CampusFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('Campus', EntityType::class, [
                 'class' => Campus::class,
                 'mapped' => false,
-                'choices' => array()
+                'choice_label' => 'name',
+                'multiple'=>false,"placeholder"=>"Choose a campus !",
+                "attr"=> ["class"=>"input is-rounded is-danger"]
             ]);
 
     }

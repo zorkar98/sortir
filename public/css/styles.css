@@ -245,3 +245,24 @@ footer {
     height: 15px;
     border-radius: 50%;
 }
+
+.profil {
+    border-style: inset;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: space-around;
+    margin: 15px;
+    border-color: transparent;
+    background-color: #ff3364;
+    color: white;
+    border-radius: 7px;
+}
+
+.button-profil {
+    border: inset;
+    border-color: transparent;
+    border-radius: 7px;
+    margin: 0 auto;
+    display: block;
+    max-width: 133.2px;
+}

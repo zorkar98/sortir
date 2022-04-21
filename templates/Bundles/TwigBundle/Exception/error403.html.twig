@@ -2,7 +2,9 @@
 
 {% block body %}
 
-    <p>  403 (Forbidden): The server refused to complete the request, this a server problem and not a request problem </p>
+    <p>  403 (Forbidden): The server refused to complete the request, this a server problem and not a request problem. </p>
+
+    <a href="{{ path('app_main') }}">Go back to the main page.</a>
 
     {#  Refus du serveur de remplir la requête, la requête n'est pas mal formée.
         Cette page devrait contenir plus de détails sur la nature de l'inaccessibilité de la page demandée,

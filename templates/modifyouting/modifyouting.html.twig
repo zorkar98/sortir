@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <div class="create">
+            <h1 class="create-title">
+                Edit your outing
+            </h1>
+            <br>
+
+            {{ form_start(outingForm) }}
+            {{ form_widget(outingForm) }}
+            <br>
+
+            <button class="button is-rounded is-danger">Edit</button>
+
+            {{ form_end(outingForm) }}
+        </div>
+    {% endif %}
+{% endblock %}

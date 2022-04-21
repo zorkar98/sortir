@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Outing;
 use App\Form\OutingType;
+use App\Form\ProfilFormType;
 use App\Repository\CampusRepository;
 use App\Repository\OutingRepository;
 use App\Repository\UserRepository;
+use App\Security\AppAuthenticator;
 use ContainerBZtjxxQ\getMaker_PhpCompatUtilService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +16,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 
 class OutingController extends AbstractController
@@ -138,4 +142,31 @@ class OutingController extends AbstractController
     }
 
 
+    #[Route('/modifyouting{id}', name: 'app_modifyouting')]
+    public function editOuting(
+        $id,
+        Request $request,
+        EntityManagerInterface $entityManager
+
+    ): Response
+    {
+        $outing = $entityManager->getRepository(Outing::class)->find($id);
+        $outingForm = $this->createForm(OutingType::class, $outing);
+
+        $outingForm->handleRequest($request);
+
+
+        if ($outingForm->isSubmitted() && $outingForm->isValid()) {
+
+            $entityManager->persist($outing);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_list');
+        }
+
+        return $this->render('/modifyouting/modifyouting.html.twig', [
+            'outingForm'=> $outingForm->createView(),
+        ]);
+
+    }
 }

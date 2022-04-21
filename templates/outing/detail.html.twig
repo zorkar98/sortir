@@ -16,13 +16,14 @@
     {% endif %}
     {% if app.user %}
         <div class="detail-div" xmlns="http://www.w3.org/1999/html">
+                <br>
                 <h2>{{ outing.name }}</h2>
                 <p> Campus : {{ outing.campus.name }}</p>
                 <p class="outing-credit">Created by {{  outing.author }}
                     on {{ outing.dateCreated | date('Y-m-d') }}.
                 </p>
                 <div>{{ outing.outingInfo | nl2br }}</div>
-
+                <br>
                 {%  if app.user.username not in outing.participants %}
                     {% if outing.participants|length < outing.registrationMaxNb %}
                         <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
@@ -32,8 +33,17 @@
                 {% if app.user.username in outing.participants %}
                     <a href="{{ path('app_outing_unregistration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Unregister</button></a>
                 {% endif %}
+                <br>
+                    <h1>List of all participants</h1>
+                <br>
+                    <i class="fa fa-arrow-down arrow"></i>
+                <br>
+                {% for participant in outing.participants %}
+                    <a href="{{ path('app_profil_other', {'username': participant }) }}">{{ participant }}</a>
+                {% endfor %}
+                <br>
+                <a href="{{ path('app_modifyouting', {'id': outing.id}) }}"><button class="header-nav-option button is-danger is-rounded"> Modify Outing</button></a>
 
-            <a href="{{ path('app_modifyouting', {'id': outing.id}) }}"><button class="header-nav-option button is-danger "> Modify Outing</button></a>
-            </div>
+        </div>
     {% endif %}
 {% endblock %}

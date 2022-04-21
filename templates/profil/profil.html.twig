@@ -7,6 +7,17 @@
 
 {% block body %}
 
+    {% if not app.user %}
+        <div class="alert-login-div">
+            <p class="alert-login">
+                Please log in to get acces to this page !
+            </p>
+            <br>
+            <a href="{{ path('app_login') }}"><button class="button is-danger is-rounded alert-login">Log in</button></a>
+        </div>
+    {% endif %}
+
+    {% if app.user %}
     <div class="detail-div">
         <p class="profil">Name : {{ app.user.name }}</p>
         <p class="profil">FirstName : {{ app.user.firstname }}</p>
@@ -14,7 +25,7 @@
         <p class="profil">Email : {{ app.user.email }}</p>
         <p class="profil">Phone : {{ app.user.phone }}</p>
     </div>
-
+    {% endif %}
     {% if app.user %}
         <div class="button-profil">
             <button class="header-nav-option button is-danger " href="{{ path('app_modifyprofil') }}">Modify Profile</button>

@@ -2,7 +2,7 @@
     <li>
         <div class="list-ligne-1">
             <a href="{{ path('app_detail',{'id':outing.id}) }}">{{ outing.name }}</a>
-            <p>0 / {{ outing.registrationMaxNb }}    <i class="fa fa-user icon-participants"></i></p>
+            <p>{{ outing.participants|length }} / {{ outing.registrationMaxNb }}    <i class="fa fa-user icon-participants"></i></p>
         </div>
         <div class="list-ligne-2">
             <p>Starting date : {{ outing.startDateTime | date ("d-m-Y h:m") }}</p>
@@ -11,6 +11,13 @@
         <br>
         <div class="list-ligne-3">
             <p class="list-author"> Created by :{{ outing.author }}</p>
+            {%  if app.user.username not in outing.participants %}
+                    <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
+            {% endif %}
+
+            {% if app.user.username in outing.participants %}
+                <a href="{{ path('app_outing_unregistration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Unregister</button></a>
+            {% endif %}
         </div>
     </li>
     <br>

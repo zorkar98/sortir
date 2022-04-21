@@ -47,6 +47,8 @@ class OutingRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+
+
     /**
      * @throws ORMException
      * @throws OptimisticLockException

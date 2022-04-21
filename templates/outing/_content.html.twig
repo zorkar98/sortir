@@ -1,5 +1,5 @@
 {% for outing in outings  %}
-    {% if "now" | date < outing.startDateTime | date_modify ("+10 days") | date   %}
+    {% if "now" | date < outing.startDateTime | date_modify ("+30 days") | date   %}
     <li>
         <div class="list-ligne-1">
             <a href="{{ path('app_detail',{'id':outing.id}) }}">{{ outing.name }}</a>

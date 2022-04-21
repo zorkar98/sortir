@@ -47,10 +47,6 @@
             {% endif %}
 
             {% if app.user %}
-            <a class="header-nav-option" href="{{ path ('app_search') }}">Find Campus ?</a>
-            {% endif %}
-
-            {% if app.user %}
                 <a class="header-nav-option" href="{{ path('app_logout') }}">Logout</a>
             {% endif %}
     </nav>

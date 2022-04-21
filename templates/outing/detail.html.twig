@@ -23,7 +23,16 @@
                 </p>
                 <div>{{ outing.outingInfo | nl2br }}</div>
 
-                <button href="" class="button is-danger is-rounded">Register</button>
+                {%  if app.user.username not in outing.participants %}
+                    {% if outing.participants|length < outing.registrationMaxNb %}
+                        <a href="{{ path('app_outing_registration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Register</button></a>
+                    {% endif %}
+                {% endif %}
+
+                {% if app.user.username in outing.participants %}
+                    <a href="{{ path('app_outing_unregistration', {'outing': outing.id}) }}"><button class="button is-danger is-rounded">Unregister</button></a>
+                {% endif %}
+
             </div>
     {% endif %}
 {% endblock %}
